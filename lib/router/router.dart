@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:gorouteapp/models/product.dart';
 //import 'package:gorouteapp/data/user.dart';
 import 'package:gorouteapp/pages/age_page.dart';
 import 'package:gorouteapp/pages/back_page.dart';
 import 'package:gorouteapp/pages/child_page.dart';
 import 'package:gorouteapp/pages/home_page.dart';
 import 'package:gorouteapp/pages/login.dart';
+import 'package:gorouteapp/pages/products_page.dart';
 import 'package:gorouteapp/pages/profile_page.dart';
+import 'package:gorouteapp/pages/single_product_page.dart';
 import 'package:gorouteapp/pages/user_page.dart';
 import 'package:gorouteapp/router/route_names.dart';
 
@@ -145,6 +148,24 @@ class RouterClass {
         path: "/back",
         builder: (context, state) {
           return BackPage();
+        },
+      ),
+
+      GoRoute(
+        name: RouteNamesClass.products,
+        path: "/products",
+        builder: (context, state) {
+          return Productspage();
+        },
+      ),
+
+      //single productt page
+      GoRoute(
+        name: RouteNamesClass.singleProduct,
+        path: "/product",
+        builder: (context, state) {
+          final Product product = state.extra as Product;
+          return SingleProductPage(product: product);
         },
       ),
     ],
